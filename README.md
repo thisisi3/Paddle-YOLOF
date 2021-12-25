@@ -24,8 +24,8 @@ Note that our implementation is based on PaddleDetection which is built on the d
 | ------------------------------------------------------------ | -------- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | -------- |
 | [official](https://github.com/chensnathan/YOLOF)             | R-50-C5  | 37.7 | 12.3([detail](https://github.com/open-mmlab/mmdetection/blob/master/configs/yolof/yolof_r50_c5_8x8_iter-1x_coco.py)) | [config](https://github.com/chensnathan/YOLOF/blob/master/configs/yolof_R_50_C5_1x.yaml) | [model](https://pan.baidu.com/share/init?surl=BSOncRYq6HeCQ8q2hrWowA)[qr6o] | NA                                                           | coco2017 |
 | [mmdet](https://github.com/open-mmlab/mmdetection/tree/master/configs/yolof) | R-50-C5  | 37.5 | 12                                                           | [config](https://github.com/open-mmlab/mmdetection/blob/master/configs/yolof/yolof_r50_c5_8x8_1x_coco.py) | [model](https://download.openmmlab.com/mmdetection/v2.0/yolof/yolof_r50_c5_8x8_1x_coco/yolof_r50_c5_8x8_1x_coco_20210425_024427-8e864411.pth) | [log](https://download.openmmlab.com/mmdetection/v2.0/yolof/yolof_r50_c5_8x8_1x_coco/yolof_r50_c5_8x8_1x_coco_20210425_024427.log.json) | coco2017 |
-| this                                                         | R-50-C5  | 37.5 | 12                                                           | config                                                       | [model](https://pan.baidu.com/s/1LiDK0V40BwyucFZDoJ3crA)[3z7q] | log                                                          | coco2017 |
-| this_re-train                                                | R-50-C5  | 37.4 | 12                                                           | config                                                       | [model](https://pan.baidu.com/s/1d0RXl2GVoQ77kg_7zzePfQ)[6faq] | log                                                          | coco2017 |
+| this                                                         | R-50-C5  | 37.5 | 12                                                           | [config](https://github.com/thisisi3/Paddle-YOLOF/blob/main/configs/yolof_r50_c5_1x_coco_8x4GPU.yml) | [model](https://pan.baidu.com/s/1LiDK0V40BwyucFZDoJ3crA)[3z7q] | [log](https://github.com/thisisi3/Paddle-YOLOF/blob/main/train-log-37.4.txt) | coco2017 |
+| this_re-train                                                | R-50-C5  | 37.4 | 12                                                           | [config](https://github.com/thisisi3/Paddle-YOLOF/blob/main/configs/yolof_r50_c5_1x_coco_8x4GPU.yml) | [model](https://pan.baidu.com/s/1d0RXl2GVoQ77kg_7zzePfQ)[6faq] | [log](https://github.com/thisisi3/Paddle-YOLOF/blob/main/train-log-37.5.txt) | coco2017 |
 
 We train and test our implementation on coco 2017 dataset. The models we provide here are trained on Baidu AIStudio platform. They are trained on 4 V100 GPUs with 8 images per GPU. Data in first two rows above table is directly taken from their official github repos. According to MMDetection's [comment](https://github.com/open-mmlab/mmdetection/tree/master/configs/yolof), both mmdet and official's version have 0.3 variation of AP. So we re-trained the same config and got 37.4 AP. Thank the team of MMDetection for providing such important information. 
 
@@ -84,7 +84,7 @@ YOLOF uses caffe-style ResNet, it corresponds to variant-a in PaddleDetection. B
 python PaddleDetection/tools/train.py -c configs/yolof_r50_c5_1x_coco_8x4GPU.yml --eval
 ```
 
-**Train YOLOF on multiple GPUs:**
+**Train YOLOF on 4 GPUs:**
 
 ```shell
 python -m paddle.distributed.launch --gpus 0,1,2,3 PaddleDetection/tools/train.py -c configs/yolof_r50_c5_1x_coco_8x4GPU.yml --eval
