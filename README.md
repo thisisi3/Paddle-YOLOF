@@ -98,7 +98,23 @@ If you do not want to evaluate AP during training, simply remove the `--eval` op
 python PaddleDetection/tools/eval.py -c configs/yolof_r50_c5_1x_coco_8x4GPU.yml -o weights=path_to_model_final.pdparams
 ```
 
+**Quick demo:**
 
+Thanks to PaddleDetection, we can use the inference script `PaddleDetection/tools/infer.py` they provide to visualize detection results of  YOLOF, by running the following code:
+
+```shell
+python PaddleDetection/tools/infer.py -c configs/yolof_r50_c5_1x_coco_8x4GPU.yml -o weights=path_to_model_final.pdparams --infer_img demo/000000185250.jpg --output_dir demo/out/ --draw_threshold 0.5
+```
+
+The test image:
+
+![](https://github.com/thisisi3/Paddle-YOLOF/blob/main/demo/000000185250.jpg?raw=true)
+
+After adding bboxes:
+
+![](https://github.com/thisisi3/Paddle-YOLOF/blob/main/demo/out/000000185250.jpg?raw=true)
+
+Both images can be found at `demo/`.
 
 ## Acknowledgement
 
